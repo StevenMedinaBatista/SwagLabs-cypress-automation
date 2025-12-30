@@ -13,6 +13,9 @@ class BurgerMenu {
     public clickBotonAbout(): void{
         this.botonAbout().should("be.visible");
         this.botonAbout().click();
+        cy.origin('https://saucelabs.com', () => {
+            cy.get('h1').should('contain', 'Build apps users love with AI-driven quality');
+        });
     };
 
     public clickBotonLogout(): void{
