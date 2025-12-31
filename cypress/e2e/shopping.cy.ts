@@ -7,6 +7,10 @@ describe("Shopping Test", () => {
     beforeEach(() => {
         loginPage.rellenarFormulario("standard_user", "secret_sauce")
     });
+
+    it("Validar todos los produtos", () => {
+        shoppingPage.verificarTodosLosProductos();
+    });
     
     it("Agregar todos los productos al carrito", () => {
         shoppingPage.verificarShoppingPage();

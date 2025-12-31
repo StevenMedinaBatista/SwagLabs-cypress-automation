@@ -1,3 +1,5 @@
+import { forEach } from "cypress/types/lodash";
+
 class ShoppingPage {
     private tittle_Products = () => cy.get('[data-test="title"]');
     private AddToCart_Backpack = () => cy.get('[data-test="add-to-cart-sauce-labs-backpack"]');
@@ -11,7 +13,14 @@ class ShoppingPage {
     private precioProducto = () => cy.get('[data-test="inventory-item-price"]');
 
     public verificarShoppingPage = () => {
-        this.tittle_Products().should('have.text', "Products")
+        this.tittle_Products().should('have.text', "Products");
+    };
+
+    public verificarTodosLosProductos = () => {
+        this.tittle_Products().should('have.text', "Products");
+        this.nombreProducto().each( (element) => {
+            cy.wrap(element).should("be.visible");
+        });
     };
 
     public agregarProductosAlCarrito(): void{
