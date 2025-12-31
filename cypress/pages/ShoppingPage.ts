@@ -6,6 +6,9 @@ class ShoppingPage {
     private AddToCart_FleeceJacket = () => cy.get('[data-test="add-to-cart-sauce-labs-fleece-jacket"]');
     private AddToCart_Onesie = () => cy.get('[data-test="add-to-cart-sauce-labs-onesie"]');
     private AddToCart_TshirtRed = () => cy.get('[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]');
+    private select_filtro = () => cy.get('[data-test="product-sort-container"]');
+    private nombreProducto = () => cy.get('[data-test="inventory-item-name"]');
+    private precioProducto = () => cy.get('[data-test="inventory-item-price"]');
 
     public verificarShoppingPage = () => {
         this.tittle_Products().should('have.text', "Products")
@@ -18,6 +21,20 @@ class ShoppingPage {
         this.AddToCart_FleeceJacket().click();
         this.AddToCart_Onesie().click();
         this.AddToCart_TshirtRed().click();
+    };
+
+    public ordenarProducto(value: string): void{
+        this.select_filtro().select(value);
+    };
+
+    public verificarFiltroPorNombre(primerNombre: string, ultimoNombre: string): void{
+        this.nombreProducto().first().should("have.text", primerNombre);
+        this.nombreProducto().last().should("have.text", ultimoNombre);
+    };
+
+    public verificarFiltroPorPrecio(primerPrecio: string, ultimoPrecio: string): void{
+        this.precioProducto().first().should("have.text", primerPrecio);
+        this.precioProducto().last().should("have.text", ultimoPrecio);
     };
 }
 
