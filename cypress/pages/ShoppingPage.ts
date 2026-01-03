@@ -45,6 +45,13 @@ class ShoppingPage {
         this.precioProducto().first().should("have.text", primerPrecio);
         this.precioProducto().last().should("have.text", ultimoPrecio);
     };
+
+    public clickTextoProductos(index: number): void{
+        // this.nombreProducto().each( ($element) => {
+        //     cy.wrap($element).should("be.visible");
+        // });
+        this.nombreProducto().eq(index).click();
+    };
 }
 
 export const shoppingPage = new ShoppingPage;

@@ -10,6 +10,11 @@ class HeaderPage {
     public abrirBurgerMenu(): void {
         this.botonBurgerMenu().click();
     }
+
+    public abrirCarritoDeCompras(): void{
+        this.shoppingCart().should("be.visible");
+        this.shoppingCart().click();
+    };
 };
 
 export const headerPage = new HeaderPage;
